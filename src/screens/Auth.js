@@ -10,13 +10,12 @@ import {
     Text,
     View,
     TextInput,
-    TouchableOpacity,
+    Image,
     ActivityIndicator,
     ScrollView,
 } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import * as firebase from 'firebase';
-import NavBar from './../components/NavBar';
 import Button from "../components/Button";
 const IsLoadingView = () => {
         return(
@@ -118,44 +117,53 @@ export default class Auth extends Component<Props> {
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
-                {this.state.isLoadingData? <IsLoadingView/> : null}
-                <TextInput
-                    style={{
-                        height: 40,
-                        width: '90%',
-                        borderColor: 'gray',
-                        borderBottomWidth: 1,
-                        marginLeft: 20,
-                        marginBottom: 20,
-                    }}
-                    autoCapitalize={'none'}
-                    autoCorrect={false}
-                    placeholder={'email'}
-                    onChangeText={(email) => this.setState({email})}
-                    value={this.state.email}
-                />
-                <TextInput
-                    style={{
-                        height: 40,
-                        width: '90%',
-                        borderColor: 'gray',
-                        borderBottomWidth: 1,
-                        marginLeft: 20,
-                        marginBottom: 20,
-                    }}
-                    secureTextEntry={true}
-                    autoCapitalize={'none'}
-                    autoCorrect={false}
-                    placeholder={'password'}
-                    onChangeText={(password) => this.setState({password})}
-                    value={this.state.password}
-                />
-                <Button onPress={() => this.signIn(this.state.email, this.state.password)}
-                        title={'Войти'}
-                />
-                <Button onPress={() => this.signUp(this.state.email, this.state.password)}
-                        title={'Зарегистрироваться'}
-                />
+                <View style={{flex: 0.3,alignItems: 'center', justifyContent:'center'}}>
+                    <Image source={require('./../assets/img/logo.png')}
+                           style={{width: 203/2, height: 106/2}}
+                    />
+                </View>
+
+                <View style={{flex:0.5,justifyContent: 'center',}}>
+                    {this.state.isLoadingData? <IsLoadingView/> : null}
+                    <TextInput
+                        style={{
+                            height: 40,
+                            width: '90%',
+                            borderColor: 'gray',
+                            borderBottomWidth: 1,
+                            marginLeft: 20,
+                            marginBottom: 20,
+                        }}
+                        autoCapitalize={'none'}
+                        autoCorrect={false}
+                        placeholder={'email'}
+                        onChangeText={(email) => this.setState({email})}
+                        value={this.state.email}
+                    />
+                    <TextInput
+                        style={{
+                            height: 40,
+                            width: '90%',
+                            borderColor: 'gray',
+                            borderBottomWidth: 1,
+                            marginLeft: 20,
+                            marginBottom: 20,
+                        }}
+                        secureTextEntry={true}
+                        autoCapitalize={'none'}
+                        autoCorrect={false}
+                        placeholder={'password'}
+                        onChangeText={(password) => this.setState({password})}
+                        value={this.state.password}
+                    />
+                    <Button onPress={() => this.signIn(this.state.email, this.state.password)}
+                            title={'Войти'}
+                    />
+                    <Button onPress={() => this.signUp(this.state.email, this.state.password)}
+                            title={'Зарегистрироваться'}
+                    />
+                </View>
+
             </ScrollView>
         );
     }
@@ -164,8 +172,6 @@ export default class Auth extends Component<Props> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-       // alignItems: 'center',
         backgroundColor: 'white',
     },
     welcome: {
