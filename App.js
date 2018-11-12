@@ -5,7 +5,6 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
 import {
     Scene,
     Router,
@@ -16,11 +15,15 @@ import {
 import Auth from './src/screens/Auth';
 import News from './src/screens/News';
 import Music from './src/screens/Music';
-import Concerts from './src/screens/Concerts';
 import Shop from './src/screens/Shop';
 import Profile from './src/screens/Profile';
 import TabIcon from './src/components/tabs/TabIcons';
 import * as firebase from 'firebase';
+
+const ICON_NEWS     = require('./src/assets/img/icons/news.png');
+const ICON_MUSIC    = require('./src/assets/img/icons/music.png');
+const ICON_SHOP     = require('./src/assets/img/icons/shop.png');
+const ICON_PROFILE  = require('./src/assets/img/icons/profile.png');
 
 const firebaseConfig = {
     apiKey: "AIzaSyBLm5d7PRXMaW-Kd5nJN2mK8Pi4QI9Ih3s",
@@ -33,58 +36,37 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const getSceneStyle = () => ({
-    backgroundColor: '#F5FCFF',
-    shadowOpacity: 1,
-    shadowRadius: 3,
+    backgroundColor: '#FFF',
 });
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1, backgroundColor: 'transparent', justifyContent: 'center',
-        alignItems: 'center',
-    },
-    tabBarStyle: {
-        backgroundColor: 'black',
-    },
-    tabBarSelectedItemStyle: {
-        backgroundColor: 'red',
-    },
-});
 
 export default class App extends Component<Props> {
   render() {
     return (
-        <Router
-            getSceneStyle={getSceneStyle}
-        >
+        <Router getSceneStyle={getSceneStyle}>
             <Overlay key='overlay'>
-                <Stack
-                    key='root'
-                >
+                <Stack key='root'>
                     <Scene
                         key="Auth"
                         component={Auth}
                         hideNavBar
                     />
-
                     <Scene hideNavBar panHandlers={null}>
                       <Tabs
                           key='tabbar'
-                          swipeEnabled
+                          swipeEnabled={false}
                           showLabel={false}
-                          tabBarStyle={styles.tabBarStyle}
-                          activeBackgroundColor="black"
-                          inactiveBackgroundColor="black"
-
                       >
                           <Stack
                               key="tab_1"
                               title="Новости"
                               tabBarLabel="Новости"
                               hideNavBar
-                              inactiveBackgroundColor="black"
-                              activeBackgroundColor="black"
-                              icon={TabIcon}
+                              icon={() =>
+                                  <TabIcon
+                                      icon={ICON_NEWS}
+                                      title={'Новости'}
+                                  />}
                           >
                               <Scene
                                   key="tab_1_1"
@@ -98,8 +80,12 @@ export default class App extends Component<Props> {
                               tabBarLabel="Музыка"
                               hideNavBar
                               inactiveBackgroundColor="#FFF"
-                              activeBackgroundColor="#DDD"
-                              icon={TabIcon}
+                              activeBackgroundColor="#FFF"
+                              icon={() =>
+                                  <TabIcon
+                                      icon={ICON_MUSIC}
+                                      title={'Музыка'}
+                                  />}
                           >
                               <Scene
                                   key="tab_2_1"
@@ -113,8 +99,12 @@ export default class App extends Component<Props> {
                               tabBarLabel="Магазин"
                               hideNavBar
                               inactiveBackgroundColor="#FFF"
-                              activeBackgroundColor="#DDD"
-                              icon={TabIcon}
+                              activeBackgroundColor="#FFF"
+                              icon={() =>
+                                  <TabIcon
+                                      icon={ICON_SHOP}
+                                      title={'Магазин'}
+                                  />}
                           >
                               <Scene
                                   key="tab_3_1"
@@ -128,8 +118,12 @@ export default class App extends Component<Props> {
                               tabBarLabel="Профиль"
                               hideNavBar
                               inactiveBackgroundColor="#FFF"
-                              activeBackgroundColor="#DDD"
-                              icon={TabIcon}
+                              activeBackgroundColor="#FFF"
+                              icon={() =>
+                                  <TabIcon
+                                      icon={ICON_PROFILE}
+                                      title={'Профиль'}
+                                  />}
                           >
                               <Scene
                                   key="tab_4_1"
