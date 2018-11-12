@@ -117,23 +117,15 @@ export default class Auth extends Component<Props> {
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
-                <View style={{flex: 0.3,alignItems: 'center', justifyContent:'center'}}>
+                <View style={styles.header}>
                     <Image source={require('./../assets/img/logo.png')}
-                           style={{width: 203/2, height: 106/2}}
+                           style={styles.logo}
                     />
                 </View>
-
-                <View style={{flex:0.5,justifyContent: 'center',}}>
+                <View style={styles.content}>
                     {this.state.isLoadingData? <IsLoadingView/> : null}
                     <TextInput
-                        style={{
-                            height: 40,
-                            width: '90%',
-                            borderColor: 'gray',
-                            borderBottomWidth: 1,
-                            marginLeft: 20,
-                            marginBottom: 20,
-                        }}
+                        style={styles.textInput}
                         autoCapitalize={'none'}
                         autoCorrect={false}
                         placeholder={'email'}
@@ -141,14 +133,7 @@ export default class Auth extends Component<Props> {
                         value={this.state.email}
                     />
                     <TextInput
-                        style={{
-                            height: 40,
-                            width: '90%',
-                            borderColor: 'gray',
-                            borderBottomWidth: 1,
-                            marginLeft: 20,
-                            marginBottom: 20,
-                        }}
+                        style={styles.textInput}
                         secureTextEntry={true}
                         autoCapitalize={'none'}
                         autoCorrect={false}
@@ -174,14 +159,25 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
+    header: {
+        flex: 0.3,
+        alignItems: 'center',
+        justifyContent:'center'
+  },
+    logo: {
+        width: 203/2,
+        height: 106/2
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
+    content: {
+        flex:0.5,
+        justifyContent: 'center',
     },
+    textInput: {
+        height: 40,
+        width: '90%',
+        borderColor: 'gray',
+        borderBottomWidth: 1,
+        marginLeft: 20,
+        marginBottom: 20,
+    }
 });
