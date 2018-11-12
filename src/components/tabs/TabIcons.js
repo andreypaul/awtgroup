@@ -8,7 +8,6 @@ import {
 
 
 const TabIcon = (props) => {
-    console.log(`====>>>>> ${JSON.stringify(props)}`);
     return (
         <View style={styles.container}>
             <Image source={props.icon} style={styles.icons}/>

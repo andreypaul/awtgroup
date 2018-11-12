@@ -24,7 +24,6 @@ export default class News extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar barStyle="light-content"/>
                 <NavBar title={'Новости'}/>
                 <Text style={styles.welcome}>
                     Welcome!

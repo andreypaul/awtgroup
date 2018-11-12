@@ -28,12 +28,6 @@ export default class Concerts extends Component<Props> {
                 <Text style={styles.welcome}>
                     Welcome Concerts!
                 </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit App.js
-                </Text>
-                <Text style={styles.instructions}>
-                    {instructions}
-                </Text>
             </View>
         );
     }

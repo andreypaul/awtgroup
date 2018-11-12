@@ -19,6 +19,7 @@ import Shop from './src/screens/Shop';
 import Profile from './src/screens/Profile';
 import TabIcon from './src/components/tabs/TabIcons';
 import * as firebase from 'firebase';
+import 'firebase/firestore'
 
 const ICON_NEWS     = require('./src/assets/img/icons/news.png');
 const ICON_MUSIC    = require('./src/assets/img/icons/music.png');
@@ -34,6 +35,11 @@ const firebaseConfig = {
     messagingSenderId: "487268736527"
 };
 firebase.initializeApp(firebaseConfig);
+const settings = {
+    timestampsInSnapshots: true
+};
+let firestore = firebase.firestore();
+firestore.settings(settings);
 
 const getSceneStyle = () => ({
     backgroundColor: '#FFF',

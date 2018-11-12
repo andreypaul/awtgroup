@@ -67,7 +67,6 @@ export default class Profile extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar barStyle="light-content"/>
                 <NavBar title={'Профиль'}/>
                 <View style={{
                     marginTop: 20,

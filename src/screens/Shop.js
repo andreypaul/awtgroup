@@ -25,17 +25,7 @@ export default class Shop extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar barStyle="light-content"/>
                 <NavBar title={'Магазин'}/>
-                <Text style={styles.welcome}>
-                    Welcome Shop!
-                </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit App.js
-                </Text>
-                <Text style={styles.instructions}>
-                    {instructions}
-                </Text>
             </View>
         );
     }

@@ -54,7 +54,7 @@ export default class Auth extends Component<Props> {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 this.setState({isLoadingData: false});
-                console.log(`User is signed in -> ${JSON.stringify(user)}`);
+               // console.log(`User is signed in -> ${JSON.stringify(user)}`);
                 Actions.tabbar();
             } else {
                 this.setState({isLoadingData: false});
@@ -117,13 +117,13 @@ export default class Auth extends Component<Props> {
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
+                {this.state.isLoadingData? <IsLoadingView/> : null}
                 <View style={styles.header}>
                     <Image source={require('./../assets/img/logo.png')}
                            style={styles.logo}
                     />
                 </View>
                 <View style={styles.content}>
-                    {this.state.isLoadingData? <IsLoadingView/> : null}
                     <TextInput
                         style={styles.textInput}
                         autoCapitalize={'none'}
